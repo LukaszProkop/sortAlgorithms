@@ -1,4 +1,4 @@
-package com.sort.algorithms.selectionsort;
+package com.sort.algorithms.insertionsort;
 
 import java.util.Arrays;
 
@@ -15,14 +15,13 @@ public class Main {
 
         long start = System.nanoTime();
 
-        for (int lastUnsortedIndex = intArray.length - 1; lastUnsortedIndex > 0; lastUnsortedIndex--) {
-            int largest = 0;
-            for (int i = 1; i <= lastUnsortedIndex; i++) {
-                if(intArray[i] > intArray[largest]){
-                    largest = i;
-                }
+        for (int firstUnsortedIndex = 1; firstUnsortedIndex < intArray.length; firstUnsortedIndex++) {
+            int newElement = intArray[firstUnsortedIndex];
+            int i;
+            for (i = firstUnsortedIndex; i > 0 && intArray[i - 1] > newElement; i--) {
+                intArray[i] = intArray[i - 1];
             }
-            swap(intArray, largest, lastUnsortedIndex);
+            intArray[i] = newElement;
         }
 
         long end = System.nanoTime() - start;

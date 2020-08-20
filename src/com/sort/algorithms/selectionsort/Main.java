@@ -1,4 +1,6 @@
-package com.sort.algorithms.bubblesort;
+package com.sort.algorithms.selectionsort;
+
+import com.sort.algorithms.NewArray;
 
 import java.util.Arrays;
 
@@ -6,9 +8,7 @@ import static com.sort.algorithms.NewArray.unsortedArray;
 import static com.sort.algorithms.Swap.swap;
 
 public class Main {
-
     public static void main(String[] args) {
-
         int[] intArray = unsortedArray(50);
 
         System.out.print("unsorted array: [");
@@ -18,11 +18,13 @@ public class Main {
         long start = System.nanoTime();
 
         for (int lastUnsortedIndex = intArray.length - 1; lastUnsortedIndex > 0; lastUnsortedIndex--) {
-            for (int i = 0; i < lastUnsortedIndex; i++) {
-                if (intArray[i] > intArray[i + 1]) {
-                    swap(intArray, i, i + 1);
+            int largest = 0;
+            for (int i = 1; i <= lastUnsortedIndex; i++) {
+                if(intArray[i] > intArray[largest]){
+                    largest = i;
                 }
             }
+            swap(intArray, largest, lastUnsortedIndex);
         }
 
         long end = System.nanoTime() - start;

@@ -2,6 +2,7 @@ package com.sort.algorithms;
 
 import java.util.HashSet;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 public class NewArray {
 
@@ -12,13 +13,10 @@ public class NewArray {
         HashSet<Integer> randomSet = new HashSet<>();
         Random r = new Random();
 
-
-        for (int a = 0; a < intArray.length; a++) {
-            randomSet.add(r
-                    .ints(1, 1000)
-                    .findFirst()
-                    .getAsInt());
-        }
+        randomSet.addAll(r
+                .ints(numberOfElements, 1, 1000)
+                .boxed()
+                .collect(Collectors.toSet()));
 
         return intArray = randomSet.stream()
                 .mapToInt(Number::intValue)

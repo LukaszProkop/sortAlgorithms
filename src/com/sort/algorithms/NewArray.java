@@ -5,7 +5,7 @@ import java.util.Random;
 
 public class NewArray {
 
-    public static int[] unsortedArray(int numberOfElements){
+    public static int[] unsortedArray(int numberOfElements) {
 
         int[] intArray = new int[numberOfElements];
 
@@ -14,10 +14,13 @@ public class NewArray {
 
 
         for (int a = 0; a < intArray.length; a++) {
-            randomSet.add(r.nextInt(1000));
+            randomSet.add(r
+                    .ints(1, 1000)
+                    .findFirst()
+                    .getAsInt());
         }
 
-        return intArray =  randomSet.stream()
+        return intArray = randomSet.stream()
                 .mapToInt(Number::intValue)
                 .toArray();
     }

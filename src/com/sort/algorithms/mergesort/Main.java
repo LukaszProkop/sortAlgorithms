@@ -1,16 +1,17 @@
 package com.sort.algorithms.mergesort;
 
 import java.util.Arrays;
+import java.util.stream.Collectors;
 
 import static com.sort.algorithms.NewArray.unsortedArray;
 
 public class Main {
     public static void main(String[] args) {
-        int[] intArray = unsortedArray(20);
+        int[] intArray = unsortedArray(50);
 
-        System.out.print("unsorted array: [");
-        Arrays.stream(intArray).forEach(value -> System.out.print(value + ", "));
-        System.out.println("]");
+        System.out.println(Arrays.stream(intArray)
+                .mapToObj(String::valueOf)
+                .collect(Collectors.joining(", ", "unsorted array: [", "]")));
 
         long start = System.nanoTime();
 
@@ -18,9 +19,10 @@ public class Main {
 
         long end = System.nanoTime() - start;
 
-        System.out.print("sorted array: [");
-        Arrays.stream(intArray).forEach(value -> System.out.print(value + ", "));
-        System.out.println("]\nsorted time: " + end);
+        System.out.println(Arrays.stream(intArray)
+                .mapToObj(String::valueOf)
+                .collect(Collectors.joining(", ", "sorted array: [", "]")));
+        System.out.println("sorted time: " + end);
     }
 
     public static void mergeSort(int[] input, int start, int end) {

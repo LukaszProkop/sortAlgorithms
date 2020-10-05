@@ -14,7 +14,7 @@ public class NewArray {
         Random r = new Random();
 
         randomSet.addAll(r
-                .ints(numberOfElements, 1, 1000)
+                .ints(numberOfElements, 1000, 10000)
                 .boxed()
                 .collect(Collectors.toSet()));
 
